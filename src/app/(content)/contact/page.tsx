@@ -54,7 +54,7 @@ export default function Contact({}) {
         <section className="flex flex-col max-w-2xl">
             <div id="content" className="flex flex-col p-0 sm:p-8">
                 <h1 className="text-2xl font-bold mb-4">Get in touch</h1>
-                <p>Whether you're looking to hire me, collaborate on a project, or just want to say hi, I'd love to hear from you.</p>
+                <p>Whether you&apos;re looking to hire me, collaborate on a project, or just want to say hi, I&apos;d love to hear from you.</p>
                 
                 <form name="contact" method="POST" data-netlify="true" className="flex flex-col gap-4 mt-2" onSubmit={onSubmit}>
                     <input type="hidden" name="form-name" value="contact"></input>

@@ -5,6 +5,10 @@ import { usePathname } from 'next/navigation'
 import { useState, useEffect } from 'react'
 import { IconMenu } from '@/app/components'
 
+function getPathname() {
+    return usePathname()
+}
+
 export function Header({ routes }: { routes: any }) {
 
     // State
@@ -12,6 +16,7 @@ export function Header({ routes }: { routes: any }) {
     const [drawerStyles, setDrawerStyles] = useState("left-[-100%]") 
     const [navStyles, setNavStyles] = useState("top-0")
     const year = new Date().getFullYear();
+    const path = getPathname();
 
     // Toggle Drawer
     const toggleDrawer = () => {
@@ -43,7 +48,7 @@ export function Header({ routes }: { routes: any }) {
     },[])
 
     return (
-        <header className={usePathname() === "/" ? "hidden" : ""}>
+        <header className={path === "/" ? "hidden" : ""}>
             {/* Nav: Desktop */}
             <nav className="hidden p-8 md:block">
                 <ul className="flex flex-row items-center gap-8 list-none px-0">
@@ -51,7 +56,7 @@ export function Header({ routes }: { routes: any }) {
                         <Link href="/" className="text-white"><img src="/logo.svg" className="max-w-[18px]"  alt="Sebastian Bryers Logo"></img></Link>
                     </li>
                     {routes.map((route) => {
-                        const isActive = usePathname() === route.path;
+                        const isActive = path === route.path;
                         return (
                             <li key={route.name}>
                                 <Link href={route.path} className={`text-xs transition-all ${isActive ? "text-primary" : "text-white"}`}>{route.name}</Link>
