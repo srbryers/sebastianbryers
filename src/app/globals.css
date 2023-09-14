@@ -25,3 +25,22 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+h1 {
+  @apply text-4xl;
+}
+div {
+  @apply text-sm;
+}
+p, li {
+  @apply text-sm mb-3;
+}
+p {
+  @apply leading-6;
+}
+ul {
+  @apply list-disc pl-8;
+}
+a {
+  @apply text-primary-500 hover:text-primary-300;
+}
