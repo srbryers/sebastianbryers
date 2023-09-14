@@ -5,8 +5,8 @@ import React, { Suspense } from 'react';
 export function ProjectList({ projects, categories, tags }: { projects: any, categories: any, tags: any }) {
 
     // Set initial state
-    const [selectedCategories, setSelectedCategories] = React.useState([]);
-    const [selectedTags, setSelectedTags] = React.useState([]);
+    const [selectedCategories, setSelectedCategories] = React.useState<String[]>([]);
+    const [selectedTags, setSelectedTags] = React.useState<String[]>([]);
     const [selectedProjects, setSelectedProjects] = React.useState([]);
 
     // Set styles for selected elements
@@ -38,7 +38,7 @@ export function ProjectList({ projects, categories, tags }: { projects: any, cat
                 <div id="categories" className="mb-6">
                     <h2 className="text-lg font-bold mb-2">Categories</h2>
                     <div className="flex flex-row flex-wrap gap-2">
-                        {categories.map((category) => {
+                        {categories.map((category: any) => {
                             const isSelected = selectedCategories.indexOf(category) > -1;
                             const onClick = () => {
                                 if (isSelected) {
@@ -60,7 +60,7 @@ export function ProjectList({ projects, categories, tags }: { projects: any, cat
                 <div id="tags" className="mb-6">
                     <h2 className="text-lg font-bold mb-2">Technologies</h2>
                     <div className="flex flex-row flex-wrap gap-2">
-                        {tags.map((tag) => {
+                        {tags.map((tag: any) => {
                             const isSelected = selectedTags.indexOf(tag) > -1;
                             const onClick = () => {
                                 if (isSelected) {
@@ -93,7 +93,7 @@ export function ProjectList({ projects, categories, tags }: { projects: any, cat
                                     <h2 className="text-xl font-bold">{project.title}</h2>
                                     {/* Categories */}
                                     <div className="flex flex-row flex-wrap">
-                                        {project.categories.map((category, index) => {
+                                        {project.categories.map((category: any, index: number) => {
                                             return <div key={category}>{category}{index < (project.categories.length - 1) ? <span className="mx-2">|</span> : ""}</div>
                                         })}
                                     </div>
@@ -104,7 +104,7 @@ export function ProjectList({ projects, categories, tags }: { projects: any, cat
                                     </div>
                                     {/* Tags */}
                                     <div className="flex flex-row flex-wrap gap-2 my-1">
-                                        {project.tags.map((tag, index) => {
+                                        {project.tags.map((tag: string, index: number) => {
                                             return <div key={tag} className="px-2 py-1 bg-gray-200 text-black rounded-md text-xs">{tag}</div>
                                         })}
                                     </div>

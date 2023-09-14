@@ -5,10 +5,6 @@ import { usePathname } from 'next/navigation'
 import { useState, useEffect } from 'react'
 import { IconMenu } from '@/app/components'
 
-function getPathname() {
-    return usePathname()
-}
-
 export function Header({ routes }: { routes: any }) {
 
     // State
@@ -16,7 +12,7 @@ export function Header({ routes }: { routes: any }) {
     const [drawerStyles, setDrawerStyles] = useState("left-[-100%]") 
     const [navStyles, setNavStyles] = useState("top-0")
     const year = new Date().getFullYear();
-    const path = getPathname();
+    const path = usePathname();
 
     // Toggle Drawer
     const toggleDrawer = () => {
@@ -55,7 +51,7 @@ export function Header({ routes }: { routes: any }) {
                     <li>
                         <Link href="/" className="text-white"><img src="/logo.svg" className="max-w-[18px]"  alt="Sebastian Bryers Logo"></img></Link>
                     </li>
-                    {routes.map((route) => {
+                    {routes.map((route: any) => {
                         const isActive = path === route.path;
                         return (
                             <li key={route.name}>
@@ -80,8 +76,8 @@ export function Header({ routes }: { routes: any }) {
                             <li className="py-4">
                                 <Link href="/" className="text-white" onClick={toggleDrawer}><img src="/logo.svg" className="max-w-[18px]"  alt="Sebastian Bryers Logo"></img></Link>
                             </li>
-                            {routes.map((route) => {
-                                const isActive = usePathname() === route.path;
+                            {routes.map((route: any) => {
+                                const isActive = path === route.path;
                                 return (
                                     <li key={route.name}>
                                         <Link href={route.path} className={`text-sm transition-all ${isActive ? "text-primary" : "text-white"}`} onClick={toggleDrawer}>{route.name}</Link>

@@ -39,7 +39,7 @@ async function sendMail(name: string, email: string, message: string) {
 
     return await new Promise((resolve, reject) => {
         // send mail
-        transporter.sendMail(mailOptions, (err, response) => {
+        transporter.sendMail(mailOptions, (err: any, response: any) => {
             if (err) {
                 reject(err);
             } else {

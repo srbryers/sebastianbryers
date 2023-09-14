@@ -42,11 +42,12 @@ export default function Contact({}) {
         const result = await sendMail(String(data.name), String(data.email), String(data.message));
 
         console.log("result:",result)
-        if (result?.rejected?.length > 0) {
-            setButtonMessage("Error!");
-        } else {
+        // Add error handling
+        // if (result) {
+        //     setButtonMessage("Error!");
+        // } else {
             setButtonMessage("Success!");
-        }
+        // }
         
     };
     

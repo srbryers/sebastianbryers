@@ -2,11 +2,11 @@
 
 import { useState, useEffect } from 'react';
 
-export function ArticleList({ articles, publications }: { articles: any, publications: any }) {
+export function ArticleList({ articles, publications }: { articles: any, publications: string[] }) {
     
     // Set initial state
     const [selectedArticles, setSelectedArticles] = useState(articles);
-    const [selectedPublications, setSelectedPublications] = useState([]);
+    const [selectedPublications, setSelectedPublications] = useState<String[]>([]);
 
     // Set styles for selected elements
     const chipClasses = "rounded-md px-2 py-1 cursor-pointer bg-gray-100 text-black";
@@ -17,7 +17,7 @@ export function ArticleList({ articles, publications }: { articles: any, publica
         if (selectedPublications.length === 0) return setSelectedArticles(articles);
         const filteredArticles = articles.filter((article: any) => {
             const articlePublications = [article.publication];
-            const hasSelectedPublication = articlePublications.some((publication: any) => { return selectedPublications.indexOf(publication) > -1 });
+            const hasSelectedPublication = selectedPublications.findIndex((selectedPublication: any) => { return articlePublications.indexOf(selectedPublication) > -1 }) > -1;
             return hasSelectedPublication;
         });
         setSelectedArticles(filteredArticles);
@@ -35,7 +35,7 @@ export function ArticleList({ articles, publications }: { articles: any, publica
                 <div id="publications" className="mb-6">
                     <h2 className="text-lg font-bold mb-2">Publications</h2>
                     <div className="flex flex-row flex-wrap gap-2">
-                        {publications.map((publication) => {
+                        {publications.map((publication: string) => {
                             const isSelected = selectedPublications.indexOf(publication) > -1;
                             const onClick = () => {
                                 if (isSelected) {
@@ -58,7 +58,7 @@ export function ArticleList({ articles, publications }: { articles: any, publica
 
             {/* Articles */}
             <div id="articles-list" className="flex-1 pt-8 mt-4 border-t md:pl-8 md:mt-0 md:border-0 md:pt-0 max-w-[1200px]">
-                {selectedArticles.map((article, index) => (
+                {selectedArticles.map((article: any, index: number) => (
                     <div key={index} className={`pb-6 mb-8 ${index < (articles.length - 1) ? "border-b border-white" : ""}`}>
                         <h2 className="text-lg font-bold mb-2">{article.title}</h2>
                         <div className="flex flex-row flex-wrap gap-4 mb-3 items-center">

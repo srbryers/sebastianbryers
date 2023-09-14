@@ -4,7 +4,7 @@
 # - run ./run_locally.sh in terminal
 
 # build docker image
-docker build -t frontend .
+docker build -t sebastianbryers-website .
 
 # run docker container with .env file
-docker run -p 3000:8080 --env-file .env frontend
+docker run -p 3000:3000 sebastianbryers-website
