@@ -1,6 +1,5 @@
 import { getContent } from "@/utils/contentful"
 import { ProjectList } from "@/app/components"
-import { Suspense } from "react"
 
 export default async function Projects({
   }: {
@@ -14,9 +13,7 @@ export default async function Projects({
 
     return (
       <section className="flex flex-row flex-wrap md:px-8">
-        <Suspense fallback={<div>Loading...</div>}>
-            <ProjectList projects={projects} categories={categories} tags={tags}></ProjectList>
-        </Suspense>
+          <ProjectList projects={projects} categories={categories} tags={tags}></ProjectList>
       </section>
     )
   }

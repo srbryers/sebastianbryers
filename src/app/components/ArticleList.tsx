@@ -1,6 +1,7 @@
 'use client'
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
+import { Loading } from '@/app/components';
 
 export function ArticleList({ articles, publications }: { articles: any, publications: string[] }) {
     
@@ -57,17 +58,19 @@ export function ArticleList({ articles, publications }: { articles: any, publica
             </div>
 
             {/* Articles */}
-            <div id="articles-list" className="flex-1 pt-8 mt-4 border-t md:pl-8 md:mt-0 md:border-0 md:pt-0 max-w-[1200px]">
-                {selectedArticles.map((article: any, index: number) => (
-                    <div key={index} className={`pb-6 mb-8 ${index < (articles.length - 1) ? "border-b border-white" : ""}`}>
-                        <h2 className="text-lg font-bold mb-2">{article.title}</h2>
-                        <div className="flex flex-row flex-wrap gap-4 mb-3 items-center">
-                            <div className="bg-gray-200 text-black rounded-md px-2 py-1 text-xs">{article.publication}</div>
-                            <a href={article.url} target="_blank" rel="noopener noreferrer" className="text-sm">View article</a>
+            <div id="articles-list" className="flex-1 pt-8 mt-4 border-t md:pl-8 md:mt-0 md:border-0 md:pt-0 max-w-[1200px] relative">
+                <Suspense fallback={<Loading></Loading>}>
+                    {selectedArticles.map((article: any, index: number) => (
+                        <div key={index} className={`pb-6 mb-8 ${index < (articles.length - 1) ? "border-b border-white" : ""}`}>
+                            <h2 className="text-lg font-bold mb-2">{article.title}</h2>
+                            <div className="flex flex-row flex-wrap gap-4 mb-3 items-center">
+                                <div className="bg-gray-200 text-black rounded-md px-2 py-1 text-xs">{article.publication}</div>
+                                <a href={article.url} target="_blank" rel="noopener noreferrer" className="text-sm">View article</a>
+                            </div>
+                            <p className="text-sm">{article.excerpt}</p>
                         </div>
-                        <p className="text-sm">{article.excerpt}</p>
-                    </div>
-                ))}
+                    ))}
+                </Suspense>
             </div>
         </>
 

@@ -1,6 +1,7 @@
 'use client'
 
 import React, { Suspense } from 'react';
+import { Loading } from '@/app/components';
 
 export function ProjectList({ projects, categories, tags }: { projects: any, categories: any, tags: any }) {
 
@@ -81,8 +82,8 @@ export function ProjectList({ projects, categories, tags }: { projects: any, cat
             </div>
             
             {/* Projects List */}
-            <div id="projects-list" className="flex-1 pt-8 mt-4 border-t md:pl-8 md:mt-0 md:border-0 md:pt-0 max-w-[1200px]">
-                <Suspense fallback={<div>Loading...</div>}>
+            <div id="projects-list" className="flex-1 pt-8 mt-4 border-t md:pl-8 md:mt-0 md:border-0 md:pt-0 max-w-[1200px] relative">
+                <Suspense fallback={<Loading className="fixed top-0 left-0 h-screen w-full" contentWidth="200"></Loading>}>
                     {selectedProjects.map((project: any, index: number) => {
                         
                         const projectFeatureImage = project.featureImage ? project.featureImage.fields.file.url : "";
