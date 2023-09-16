@@ -32,7 +32,9 @@ export function Header({ routes }: { routes: any }) {
         let prevScrollPos = window.scrollY;
         window.onscroll = () => {
             const currentScrollPos = window.scrollY;
-            if (prevScrollPos > currentScrollPos) {
+            if (currentScrollPos < 50) {
+                setNavStyles("top-0")
+            } else if (prevScrollPos > currentScrollPos) {
                 // console.log("show nav")
                 setNavStyles("top-0")
             } else {
