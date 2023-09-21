@@ -21,14 +21,14 @@ export default function About({}) {
             
             {/* @TODO: Move to Contentful */}
             <div id="content" className="flex flex-col flex-1 p-0 max-w-full min-w-[66%] sm:p-8">
-                <p>Originally hailing from New Zealand, and now based in Boston, MA, I am a full-stack developer and multi-disciplinary entrepreneur intent on finding ways to use technology to improve the human experience.</p>
+                <p>Originally hailing from New Zealand, and now based in Boston, MA, I am a growth marketer and full-stack developer intent on finding ways to use technology to improve the human experience.</p>
                 <p>I am an idealist. To me, technological progress is not the goal - tech is a tool. I believe in building technology and businesses that:</p>
                 <ul>
                     <li>Improve our ability to communicate effectively with each other;</li>
                     <li>Help us to better understand our society - its strengths, weaknesses, economics, and systemic biases; and</li>
                     <li>Enable us to bridge the knowledge and education gap and help to shed light on or actively reduce inequality.</li>
                 </ul>
-                <p>I find the most fulfillment working on projects in Journalism, Artificial Intelligence, and Climate Change, and I am looking to work for or with organizations that are finding practical uses for technology to help incrementally improve our world.</p>
+                <p>I find the most fulfillment working on projects in Ecommerce, Artificial Intelligence, and Climate Change, and I am looking to work for or with organizations that are finding practical uses for technology to help incrementally improve our world.</p>
 
                 <div id="actions" className="mt-2">
                     <Button content="Get in touch" onClick={() => { router.push("/contact" )}}></Button>
