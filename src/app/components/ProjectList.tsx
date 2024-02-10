@@ -118,7 +118,7 @@ export function ProjectList({ projects, categories, tags }: { projects: any, cat
                                 </div>
                                 {/* Image */}
                                 <div className="project-image aspect-[16/10] max-w-3xl mt-2">
-                                    <img className="w-auto" src={projectFeatureImage} alt={project.title} />
+                                    <img className="w-auto rounded-lg" src={projectFeatureImage} alt={project.title} />
                                 </div>
                             </div>
                         )
