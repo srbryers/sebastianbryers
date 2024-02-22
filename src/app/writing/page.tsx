@@ -3,6 +3,11 @@ import { ArticleList } from '@/app/components'
 import { Suspense } from 'react'
 
 async function getData() {
+
+    if (!process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID || !process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN) {
+        console.error("Contentful space ID and access token not found")
+        return []
+    }
     const client = createClient({
       // This is the space ID. A space is like a project folder in Contentful terms
       space: process.env.CONTENTFUL_SPACE_ID || "",
