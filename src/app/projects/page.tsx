@@ -1,12 +1,32 @@
-import { getContent } from "@/utils/contentful"
+import { createClient } from "contentful"
 import { ProjectList } from "@/app/components"
+
+async function getData() {
+  const client = createClient({
+    // This is the space ID. A space is like a project folder in Contentful terms
+    space: process.env.CONTENTFUL_SPACE_ID || "",
+    // This is the access token for this space. Normally you get both ID and the token in the Contentful web app
+    accessToken: process.env.CONTENTFUL_ACCESS_TOKEN || "",
+  })
+
+  return client
+    .getEntries({
+      content_type: 'project',
+    })
+    .then((response: any) => response.items)
+    .catch((error: any) => {
+      console.error(error)
+      return []
+    })
+
+}
 
 export default async function Projects({
   }: {
   }) {
 
     // Fetch projects data
-    const contentfulProjects = await getContent('project');
+    const contentfulProjects = await getData();
     const projects = contentfulProjects.map((project: any) => { return project.fields }).reverse();
     const categories = projects.map((project: any) => { return project.categories }).flat().filter((value: any, index: number, array: any) => { return array.indexOf(value) === index });;
     const tags = projects.map((project: any) => { return project.tags }).flat().filter((value: any, index: number, array: any) => { return array.indexOf(value) === index });
@@ -17,3 +37,4 @@ export default async function Projects({
       </section>
     )
   }
+
